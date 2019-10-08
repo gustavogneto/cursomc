@@ -12,7 +12,8 @@ public class Categoria implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY) 
+	// definindo estrategia de geração automatica de ids das categorias
 	private Integer id;
 	private String name;
 
