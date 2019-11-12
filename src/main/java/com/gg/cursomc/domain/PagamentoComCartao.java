@@ -1,7 +1,9 @@
 package com.gg.cursomc.domain;
 
-import com.gg.cursomc.domain.enums.EstadoPagamento;
+import javax.persistence.Entity;
 
+import com.gg.cursomc.domain.enums.EstadoPagamento;
+@Entity
 public class PagamentoComCartao extends Pagamento {
 	private static final long serialVersionUID = 1L;
 
@@ -10,7 +12,7 @@ public class PagamentoComCartao extends Pagamento {
 	public PagamentoComCartao() {
 	}
 
-	public PagamentoComCartao(Integer id, EstadoPagamento estadoPagamento, Pedido pedido) {
+	public PagamentoComCartao(Integer id, EstadoPagamento estadoPagamento, Pedido pedido, Integer numeroDeParcelas) {
 		super(id, estadoPagamento, pedido);
 		this.numeroDeParcelas = numeroDeParcelas;
 	}

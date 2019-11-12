@@ -2,11 +2,12 @@ package com.gg.cursomc.domain;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import com.gg.cursomc.domain.enums.EstadoPagamento;
-
+@Entity
 public class PagamentoComBoleto extends Pagamento {
 	private static final long serialVersionUID = 1L;
 	
@@ -19,7 +20,7 @@ public class PagamentoComBoleto extends Pagamento {
 	}
 
 	
-	public PagamentoComBoleto(Integer id, EstadoPagamento estadoPagamento, Pedido pedido) {
+	public PagamentoComBoleto(Integer id, EstadoPagamento estadoPagamento, Pedido pedido, Date dataVencimento, Date dataPagamento ) {
 		super(id, estadoPagamento, pedido);
 		this.dataVencimento = dataVencimento;
 		this.dataPagamento = dataPagamento;

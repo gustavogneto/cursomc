@@ -14,14 +14,16 @@ import com.gg.cursomc.domain.enums.EstadoPagamento;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
+//abstract, para evitar que a classe pagamento seja instanciada
 public abstract class Pagamento implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	private Integer id;
-	private EstadoPagamento estadoPagamento;
+	private Integer estadoPagamento;
 
-	@JoinColumn(name = "pedido_id")
+	
 	@OneToOne
+	@JoinColumn(name = "pedido_id")
 	@MapsId
 	private Pedido pedido;
 
@@ -31,7 +33,7 @@ public abstract class Pagamento implements Serializable {
 	public Pagamento(Integer id, EstadoPagamento estadoPagamento, Pedido pedido) {
 		super();
 		this.id = id;
-		this.estadoPagamento = estadoPagamento;
+		this.estadoPagamento = estadoPagamento.getCod();
 		this.pedido = pedido;
 	}
 
@@ -40,7 +42,7 @@ public abstract class Pagamento implements Serializable {
 	}
 
 	public EstadoPagamento getEstadoPagamento() {
-		return estadoPagamento;
+		return EstadoPagamento.toEnum(estadoPagamento);
 	}
 
 	public Pedido getPedido() {
@@ -52,7 +54,7 @@ public abstract class Pagamento implements Serializable {
 	}
 
 	public void setEstadoPagamento(EstadoPagamento estadoPagamento) {
-		this.estadoPagamento = estadoPagamento;
+		this.estadoPagamento = estadoPagamento.getCod();
 	}
 
 	public void setPedido(Pedido pedido) {
