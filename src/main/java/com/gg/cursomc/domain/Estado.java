@@ -20,24 +20,13 @@ public class Estado implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String nome;
-	 /**@JsonBackReference 
-	  * |trocado por| 
-	  * @JsonIgnore*/
-	@JsonIgnore
-	@OneToMany(mappedBy = "estado")
 	
+	@JsonIgnore
+	@OneToMany(mappedBy = "estado")	
 	private List<Cidade> cidades = new ArrayList<Cidade>();
 
-	public List<Cidade> getCidades() {
-		return cidades;
-	}
-
-	public void setCidades(List<Cidade> cidades) {
-		this.cidades = cidades;
-	}
 
 	public Estado() {
-		super();
 
 	}
 
@@ -76,6 +65,14 @@ public class Estado implements Serializable {
 			return false;
 		return true;
 	}
+	public List<Cidade> getCidades() {
+		return cidades;
+	}
+
+	public void setCidades(List<Cidade> cidades) {
+		this.cidades = cidades;
+	}
+
 
 	public String getNome() {
 		return nome;

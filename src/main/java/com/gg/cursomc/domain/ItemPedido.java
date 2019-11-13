@@ -10,7 +10,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 public class ItemPedido implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@JsonIgnore
 	@EmbeddedId
 	private ItemPedidoPK id = new ItemPedidoPK();
@@ -23,21 +23,53 @@ public class ItemPedido implements Serializable {
 	}
 
 	public ItemPedido(Pedido pedido, Produto produto, Double desconto, Integer quantidade, Double preco) {
+		super();
+		id.setPedido(pedido);
+		id.setProduto(produto);
 		this.desconto = desconto;
 		this.quantidade = quantidade;
 		this.preco = preco;
-		id.setPedido(pedido);
-		id.setProduto(produto);
 	}
-	@JsonIgnore
-	public Pedido GetPedido() {
 
+	@JsonIgnore
+	public Pedido getPedido() {
 		return id.getPedido();
 	}
-	
-	public Produto GetProduto() {
 
+	public Produto getProduto() {
 		return id.getProduto();
+	}
+
+	public ItemPedidoPK getId() {
+		return id;
+	}
+
+	public void setId(ItemPedidoPK id) {
+		this.id = id;
+	}
+
+	public Double getDesconto() {
+		return desconto;
+	}
+
+	public void setDesconto(Double desconto) {
+		this.desconto = desconto;
+	}
+
+	public Integer getQuantidade() {
+		return quantidade;
+	}
+
+	public void setQuantidade(Integer quantidade) {
+		this.quantidade = quantidade;
+	}
+
+	public Double getPreco() {
+		return preco;
+	}
+
+	public void setPreco(Double preco) {
+		this.preco = preco;
 	}
 
 	@Override
@@ -63,38 +95,6 @@ public class ItemPedido implements Serializable {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
-	}
-
-	public ItemPedidoPK getId() {
-		return id;
-	}
-
-	public Double getDesconto() {
-		return desconto;
-	}
-
-	public Integer getQuantidade() {
-		return quantidade;
-	}
-
-	public Double getPreco() {
-		return preco;
-	}
-
-	public void setId(ItemPedidoPK id) {
-		this.id = id;
-	}
-
-	public void setDesconto(Double desconto) {
-		this.desconto = desconto;
-	}
-
-	public void setQuantidade(Integer quantidade) {
-		this.quantidade = quantidade;
-	}
-
-	public void setPreco(Double preco) {
-		this.preco = preco;
 	}
 
 }

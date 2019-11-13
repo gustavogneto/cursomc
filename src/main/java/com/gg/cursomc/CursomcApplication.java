@@ -27,6 +27,7 @@ import com.gg.cursomc.repositories.ClienteRepository;
 import com.gg.cursomc.repositories.EnderecoRepository;
 import com.gg.cursomc.repositories.EstadoRepository;
 import com.gg.cursomc.repositories.ItemPedidoRepository;
+import com.gg.cursomc.repositories.PagamentoRepository;
 import com.gg.cursomc.repositories.PedidoRepository;
 import com.gg.cursomc.repositories.ProdutoRepository;
 
@@ -49,6 +50,8 @@ public class CursomcApplication implements CommandLineRunner {
 	private PedidoRepository pedidoRepository;
 	@Autowired
 	private ItemPedidoRepository itemPedidoRepository;
+	@Autowired
+	private PagamentoRepository pagamentoRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(CursomcApplication.class, args);
@@ -124,7 +127,7 @@ public class CursomcApplication implements CommandLineRunner {
 		cliente2.getPedidos().addAll(Arrays.asList(pedido2));
 		
 		pedidoRepository.saveAll(Arrays.asList(pedido1,pedido2));
-		
+		pagamentoRepository.saveAll(Arrays.asList(pagamento1, pagamento2));
 		
 		ItemPedido itemPedido1 = new ItemPedido(pedido1, p1, 0.0, 1, 2000.00);
 		ItemPedido itemPedido2 = new ItemPedido(pedido1, p2, 0.0, 2, 800.00);

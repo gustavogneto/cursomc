@@ -13,7 +13,7 @@ import com.gg.cursomc.domain.Pedido;
 import com.gg.cursomc.services.PedidoService;
 
 @RestControllerAdvice
-@RequestMapping(value = "/pedido")
+@RequestMapping(value = "/pedidos")
 public class PedidoResource {
 
 	@Autowired
