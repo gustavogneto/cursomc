@@ -52,7 +52,7 @@ public class ClienteService {
 		try {
 			repo.deleteById(id);
 		} catch (DataIntegrityViolationException e) {
-			throw new DataIntegrityException("Não é possivel executar delete em categorias que possuem produtos");
+			throw new DataIntegrityException("Não é possivel executar operação, pois possuem entidades relacionadas");
 		}
 
 	}
