@@ -8,6 +8,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import com.gg.cursomc.domain.Categoria;
+import com.gg.cursomc.dto.CategoriaDTO;
 import com.gg.cursomc.repositories.CategoriaRepository;
 import com.gg.cursomc.services.exceptions.DataIntegrityException;
 import com.gg.cursomc.services.exceptions.ObjectNotFoundException;
@@ -46,10 +47,11 @@ public class CategoriaService {
 	}
 	
 	public List<Categoria> findAll() {
-		
 		return repo.findAll();
 		}
-	
+	public Categoria fromDTO(CategoriaDTO objDto) {
+		return new Categoria(objDto.getId(), objDto.getName());
+	}
 	
 
 }
